@@ -110,6 +110,10 @@ class UserController extends Controller
                 // assign new role to the user
                 $user->syncRoles($request->role);
 
+                $user->addMediaFromRequest('image')
+                    ->usingName($user->name)
+                    ->toMediaCollection();
+
                 return redirect('users')->with('success', 'New user created!');
             }
 
@@ -188,6 +192,14 @@ class UserController extends Controller
                 $update = $user->update($payload);
                 // sync user role
                 $user->syncRoles($request->role);
+
+                if ($request->hasFile('image')) {
+                    $user->clearMediaCollection();
+                    $user->addMediaFromRequest('image')
+                        ->usingName($user->name)
+                        ->toMediaCollection();
+                }
+
 
                 return redirect()->back()->with('success', 'User information updated succesfully!');
             }
