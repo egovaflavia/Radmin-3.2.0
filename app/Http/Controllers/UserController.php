@@ -55,6 +55,12 @@ class UserController extends Controller
 
                 return $badges;
             })
+            ->addColumn('image', function ($data) {
+                // $url = $data->getFirstMediaUrl('thumb');
+                $url = $data->getFirstMediaUrl('user_image', 'thumb');
+                $img = '<img class="img-responsive" src="' . $url . '">';
+                return $img;
+            })
             ->addColumn('action', function ($data) use ($hasManageUser) {
                 $output = '';
                 if ($data->name == 'Super Admin') {
@@ -66,10 +72,9 @@ class UserController extends Controller
                                 <a href="' . url('user/delete/' . $data->id) . '"><i class="ik ik-trash-2 f-16 text-red"></i></a>
                             </div>';
                 }
-
                 return $output;
             })
-            ->rawColumns(['roles', 'permissions', 'action'])
+            ->rawColumns(['roles', 'permissions', 'action', 'image'])
             ->make(true);
     }
 
@@ -112,7 +117,7 @@ class UserController extends Controller
 
                 $user->addMediaFromRequest('image')
                     ->usingName($user->name)
-                    ->toMediaCollection();
+                    ->toMediaCollection('user_image');
 
                 return redirect('users')->with('success', 'New user created!');
             }
@@ -194,10 +199,10 @@ class UserController extends Controller
                 $user->syncRoles($request->role);
 
                 if ($request->hasFile('image')) {
-                    $user->clearMediaCollection();
+                    $user->clearMediaCollection('user_image');
                     $user->addMediaFromRequest('image')
                         ->usingName($user->name)
-                        ->toMediaCollection();
+                        ->toMediaCollection('user_image');
                 }
 
 

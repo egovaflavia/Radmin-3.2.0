@@ -4,8 +4,8 @@
     $(document).ready(function()
     {
         var searchable = [];
-        var selectable = []; 
-        
+        var selectable = [];
+
 
         var dTable = $('#roles_table').DataTable({
 
@@ -135,8 +135,8 @@
     {
 
         var searchable = [];
-        var selectable = []; 
-        
+        var selectable = [];
+
 
         var dTable = $('#user_table').DataTable({
 
@@ -161,6 +161,7 @@
             columns: [
                 /*{data:'serial_no', name: 'serial_no'},*/
                 {data:'name', name: 'name', orderable: false, searchable: false},
+                {data:'image', name: 'image'},
                 {data:'email', name: 'email'},
                 {data:'roles', name: 'roles'},
                 {data:'permissions', name: 'permissions'},

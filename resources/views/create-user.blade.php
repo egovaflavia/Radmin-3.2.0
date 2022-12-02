@@ -95,8 +95,6 @@
                                         class="form-control @error('image') is-invalid @enderror" name="image"
                                         placeholder="Image" required>
                                     <div class="help-block with-errors"></div>
-
-
                                 </div>
                                 <div class="form-group">
                                     <label for="password-confirm">{{ __('Confirm Password')}}<span
