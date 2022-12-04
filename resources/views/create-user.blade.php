@@ -50,6 +50,20 @@
                             <div class="col-sm-6">
 
                                 <div class="form-group">
+                                    <label for="name">{{ __('Name')}}<span class="text-red">*</span></label>
+                                    <input id="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="" placeholder="Enter name" required>
+                                    <div class="help-block with-errors"></div>
+
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="name">{{ __('Username')}}<span class="text-red">*</span></label>
                                     <input id="username" type="text"
                                         class="form-control @error('username') is-invalid @enderror" name="username"

@@ -30,6 +30,7 @@ class UserRequest extends FormRequest
             'email' => 'required | email | unique:users',
             'password' => 'required | confirmed',
             'role' => 'required',
+            'username' => 'required',
         ];
     }
 
