@@ -51,12 +51,12 @@
 
                                 <div class="form-group">
                                     <label for="name">{{ __('Username')}}<span class="text-red">*</span></label>
-                                    <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name" value=""
-                                        placeholder="Enter user name" required>
+                                    <input id="username" type="text"
+                                        class="form-control @error('username') is-invalid @enderror" name="username"
+                                        value="" placeholder="Enter username" required>
                                     <div class="help-block with-errors"></div>
 
-                                    @error('name')
+                                    @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -77,6 +77,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="image">{{ __('Image')}}<span class="text-red">*</span></label>
+                                    <input id="image" type="file"
+                                        class="form-control @error('image') is-invalid @enderror" name="image"
+                                        placeholder="Image" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="password">{{ __('Password')}}<span class="text-red">*</span></label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
@@ -89,13 +97,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="image">{{ __('Image')}}<span class="text-red">*</span></label>
-                                    <input id="image" type="file"
-                                        class="form-control @error('image') is-invalid @enderror" name="image"
-                                        placeholder="Image" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="password-confirm">{{ __('Confirm Password')}}<span
                                             class="text-red">*</span></label>
@@ -103,10 +105,6 @@
                                         name="password_confirmation" placeholder="Retype password" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
-
-
-
-
 
                             </div>
                             <div class="col-md-6">

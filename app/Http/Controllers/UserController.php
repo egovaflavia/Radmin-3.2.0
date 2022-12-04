@@ -108,6 +108,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
+                'username' => $request->username,
             ]);
 
 
@@ -188,6 +189,7 @@ class UserController extends Controller
                 $payload = [
                     'name' => $request->name,
                     'email' => $request->email,
+                    'username' => $request->username,
                 ];
                 // update password if user input a new password
                 if (isset($request->password) && $request->password) {
